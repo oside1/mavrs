@@ -1,0 +1,48 @@
+﻿
+@{ Layout = "_Layout";
+    @model MAVRS.Models.Admin
+}
+
+@{ if (ViewData["Log_in"] == "0")
+                {
+    <div class="alert alert-danger" role="alert">
+        <img src="/images/119051.png" class="logo1"> &nbsp;
+        <strong>Invalid log in!</strong> No records found from the credentials provided!
+    </div> }
+                else if (ViewData["Log_in"] == "1")
+                {
+    <div class="alert alert-primary" role="alert">
+        <img src="/images/119044.png" class="logo1"> &nbsp;
+        <strong>Success!</strong> Super admin successfully registered to the system!
+    </div> }
+                else
+                {
+    <div class="alert alert-Success" role="alert">
+        <img src="/images/119044.png" class="logo1"> &nbsp;
+
+        <strong>Please log in to continue</strong>
+    </div> } }
+<div class="row">
+    <div class="col-md-12">
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="staff_no" class="control-label"></label>
+                <input asp-for="staff_no" class="form-control" />
+                <span asp-validation-for="staff_no" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Log in" asp-action="Log_in" asp-controller="Admins" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
